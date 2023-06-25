@@ -47,3 +47,26 @@
         }
     }
 }
+
+@media only screen and (max-width: 480px){
+    .header{
+
+        &__nav{
+
+            &__title{
+                font-size: 16px;
+            }
+
+            &__dark-mode{
+
+                &__text{
+                    font-size: 12px;
+                }
+
+                &__icon{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
