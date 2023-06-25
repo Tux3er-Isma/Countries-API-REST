@@ -1,0 +1,49 @@
+/*SCSS Files*/
+@use 'variables';
+
+/*Header Styles*/
+.header{
+
+    &__nav{
+        box-shadow: 1px 1px 3px 2px #ddd;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title{
+            margin-left: 30px;
+            font-weight: bold;
+        }
+
+        &__dark-mode{
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+            &__text{
+                margin-left: 5px;
+                font-weight: bold;
+                font-size: 16px;
+                transition: all .5s;
+
+                &:hover{
+                    color: transparent;
+                    -webkit-text-stroke: .1px #000;
+                }
+            }
+
+            &__icon{
+                font-size: 16px;
+                transition: all .5s;
+
+                &:hover{
+                    transform: rotate(360deg);
+                }
+            }
+        }
+    }
+}
