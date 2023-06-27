@@ -50,6 +50,8 @@
                 display: flex;
                 justify-content: space-between;
                 background-color: #fff;
+                z-index: 3;
+                position: relative;
 
                 &__icon{
                     transition: all .5s;
@@ -62,7 +64,7 @@
                 padding: 20px;
                 box-shadow: 1px 1px 3px 2px #ddd;
                 background-color: #fff;
-                z-index: -1;
+                z-index: 2;
                 position: absolute;
                 transition: all .5s;
                 transform: translateY(-170px);
@@ -98,6 +100,47 @@
                     &:hover{
                         cursor: pointer;
                     }
+                }
+            }
+        }
+    }
+
+    &__flags-container{
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        &__country-container{
+            width: 250px;
+            margin: 10px;
+            box-shadow: 1px 1px 3px 2px #ddd;
+            height: 300px;
+            border-radius: 10px;
+
+            &__img{
+                width: 250px;
+                height: 150px;
+            }
+
+            &__info-container{
+                margin-top: 20px;
+                margin-left: 20px;
+
+                &__name{
+                    margin-bottom: 10px;
+                }
+
+                &__population{
+                    display: flex;
+                }
+
+                &__region{
+                    display: flex;
+                }
+
+                &__capital{
+                    display: flex;
                 }
             }
         }
