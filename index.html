@@ -30,13 +30,27 @@
     </header>
     <main class="main">
         <nav class="main__nav">
-            <div class="main__nav__search-bar">
+            <div class="main__nav__search-bar" tabindex="0">
                 <i class="fa-solid fa-magnifying-glass main__nav__search-bar__icon"></i>
-                <input type="text" placeholder="Search for a country..." class="main__nav__search-bar__inpt">
+                <input type="text" placeholder="Search for a country..." class="main__nav__search-bar__inpt" tabindex="0">
+            </div>
+            <div class="main__nav__select">
+                <div class="main__nav__select__default">
+                    <p class="main__nav__select__default__text">Filter by Region</p>
+                    <i class="fa-solid fa-chevron-up main__nav__select__default__icon" tabindex="0"></i>
+                </div>
+                <div class="main__nav__select__options-container">
+                    <p class="main__nav__select__options-container__options">Africa</p>
+                    <p class="main__nav__select__options-container__options">America</p>
+                    <p class="main__nav__select__options-container__options">Asia</p>
+                    <p class="main__nav__select__options-container__options">Europe</p>
+                    <p class="main__nav__select__options-container__options">Oceania</p>
+                </div>
             </div>
         </nav>
     </main>
     <!--JS File-->
     <script src="/src/js/script.js" type="text/javascript"></script>
+    <script src="/src/js/select.js" type="text/javascript"></script>
 </body>
 </html>
