@@ -3,6 +3,7 @@
 
 /*Header Styles*/
 .header{
+    width: 100%;
 
     &__nav{
         box-shadow: 1px 1px 3px 2px #ddd;
@@ -48,10 +49,13 @@
     }
 }
 
+/*Mobile Header Styles*/
+
 @media only screen and (max-width: 480px){
     .header{
 
         &__nav{
+            height: 20vh;
 
             &__title{
                 font-size: 16px;
