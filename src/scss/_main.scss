@@ -112,6 +112,7 @@
         justify-content: space-around;
 
         &__country-container{
+            opacity: 0;
             width: 250px;
             margin: 10px;
             box-shadow: 1px 1px 3px 2px #ddd;
@@ -148,7 +149,6 @@
 
     &__country{
         display: flex;
-        width: 1050px;
         justify-content: space-between;
 
         &__img{
@@ -217,9 +217,10 @@
     }
 }
 
+
 @media only screen and (max-width: 480px){
     .main{
-        margin-top: 20px;
+        margin-top: 200px;
 
         &__nav{
             flex-direction: column;
@@ -245,6 +246,54 @@
                 &__options-container{
                     width: 150px;
                     font-size: 12px;
+                }
+            }
+        }
+
+        &__country{
+            flex-direction: column;
+            justify-content: center;
+
+            &__img{
+                width: 250px;
+                height: 150px;
+            }
+
+            &__data-container{
+                margin-left: 50px;
+                margin-right: 50px;
+                height: 405px;
+                display: flex;
+                flex-direction: column;
+
+                &__info-container{
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+
+                    &__top-level-domain{
+                        margin-left: 0px;
+                    }
+    
+                    &__currencies{
+                        margin-left: 0px;
+                    }
+    
+                    &__lang{
+                        margin-left: 0px;
+                    }
+                }
+
+                &__border{
+                    margin-top: 30px;
+                    width: 300px;
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    &__border-container{
+                        margin: 5px;
+                    }
                 }
             }
         }
