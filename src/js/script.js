@@ -24,7 +24,7 @@ const verifyVisibility = (evt) =>{
     for (let i = 0; i < evt.length; i++){
         if (evt[i].isIntersecting == true){
             let id = parseInt(evt[i].target.id);
-            let s = id / 100 + 0.5;
+            let s = '0.3';
             evt[i].target.style.animation = `appear ${s}s forwards`;
         }
     }
