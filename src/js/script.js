@@ -1,4 +1,4 @@
-window.sr = ScrollReveal();
+"use strict";
 
 fetch('/src/js/data.json').then((res) =>{
     res.json().then((res) =>{
@@ -8,11 +8,29 @@ fetch('/src/js/data.json').then((res) =>{
     })
 })
 
+const headerNav = document.querySelector('.header__nav');
+const darkContainer = document.querySelector('.header__nav__dark-mode');
+let darkContainerIcon = document.querySelector('.header__nav__dark-mode__icon');
+let darkContainerTxt = document.querySelector('.header__nav__dark-mode__text');
+let clear = true;
+
 const searchBarInpt = document.querySelector('.main__nav__search-bar__inpt');
 let countryName;
 const main = document.querySelector('.main');
 const nav = document.querySelector('.main__nav');
 let flagsContainer = document.querySelector('.main__flags-container');
+
+const verifyVisibility = (evt) =>{
+    for (let i = 0; i < evt.length; i++){
+        if (evt[i].isIntersecting == true){
+            let id = parseInt(evt[i].target.id);
+            let s = id / 100 + 0.5;
+            evt[i].target.style.animation = `appear ${s}s forwards`;
+        }
+    }
+}
+
+const observer = new IntersectionObserver(verifyVisibility);
 
 const createCountryInformationPage = (src, name, native, population, region, subRegion, capital, topLevelDomain, currencies, langArr, borderArr) =>{
     const container = document.createElement('DIV');
@@ -158,9 +176,7 @@ const createCountryContainer = (src, name, population, region, capital, seconds,
     container.appendChild(infoContainer);
     flagsContainer.appendChild(container);
 
-    // sr.reveal(container, {
-    //     delay: seconds,
-    // })
+    observer.observe(container);
     
     container.addEventListener('click', (evt) =>{
         fetch('/src/js/data.json').then((res) =>{
@@ -193,7 +209,6 @@ searchBarInpt.addEventListener('keyup', (evt) =>{
             for (let i = 0; i < res.length; i++){
                 if (res[i].name.toLowerCase().startsWith(evt.target.value.toLowerCase())) {
                     flagsContainer.childNodes[i].style.display = 'block';
-                    sr.destroy()
                 } else {
                     flagsContainer.childNodes[i].style.display = 'none';
                 }
@@ -216,4 +231,144 @@ document.querySelector('.main__nav__select__options-container').childNodes.forEa
             })
         })
     })
+})
+
+darkContainer.addEventListener('click', () =>{
+    if (clear == true){
+        clear = false;
+        darkContainerIcon.classList.replace('fa-moon', 'fa-sun');
+        darkContainerTxt.textContent = "Clear Mode";
+        let darkStyles = document.createElement('STYLE');
+        darkStyles.innerHTML = `
+
+        *{
+            color: #fff;
+        }
+
+        body{
+            background-color: hsl(207, 26%, 17%);
+        }
+
+        .header__nav{
+            background-color: hsl(209, 23%, 22%); 
+            box-shadow: none;
+        }
+
+        .header__nav__dark-mode__text:hover{
+            -webkit-text-stroke: .1px #fff;
+        }
+
+        .main__nav__search-bar{
+            background-color: hsl(209, 23%, 22%);
+            box-shadow: none;
+            border-radius: 10px;
+        }
+
+        .main__nav__search-bar:focus, .main__nav__search-bar:focus-within{
+            box-shadow: none;
+        }
+
+        .main__nav__search-bar__inpt{
+            background-color: hsl(209, 23%, 22%);
+        }
+
+        .main__nav__select__default{
+            background-color: hsl(209, 23%, 22%);
+            box-shadow: none;
+        }
+
+        .main__nav__select__options-container{
+            background-color: hsl(209, 23%, 22%);
+            box-shadow: none;
+        }
+
+        .main__flags-container__country-container{
+            background-color: hsl(209, 23%, 22%);
+            box-shadow: none;
+        }
+
+        .main__country__img{
+            box-shadow: none;
+        }
+
+        .main__country__data-container__border__border-container{
+            box-shadow: none;
+            background-color: hsl(209, 23%, 22%);
+        }
+
+        .footer__information-container{
+            background: rgba(0, 0, 0, 1);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(14.1px);
+            -webkit-backdrop-filter: blur(14.1px);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        `
+        document.head.appendChild(darkStyles);
+        console.log("The page is in dark mode 🌑");
+    } else if (clear == false){
+        clear = true;
+        darkContainerIcon.classList.replace('fa-sun', 'fa-moon');
+        darkContainerTxt.textContent = "Dark Mode";
+        let clearStyles = document.createElement('STYLE');
+        clearStyles.innerHTML = `
+        *{
+            color: hsl(200, 15%, 8%);
+        }
+
+        body{
+            background-color: #fff;
+        }
+
+        .header__nav{
+            background-color: #fff; 
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .header__nav__dark-mode__text:hover{
+            -webkit-text-stroke: .1px #000;
+        }
+
+        .main__nav__search-bar{
+            background-color: #fff;
+            box-shadow: 1px 1px 3px 2px #ddd;
+            border-radius: 10px;
+        }
+
+        .main__nav__search-bar:focus, .main__nav__search-bar:focus-within{
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .main__nav__search-bar__inpt{
+            background-color: #fff;
+        }
+
+        .main__nav__select__default{
+            background-color: #fff;
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .main__nav__select__options-container{
+            background-color: #fff;
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .main__flags-container__country-container{
+            background-color: #fff;
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .main__country__img{
+            box-shadow: 1px 1px 3px 2px #ddd;
+        }
+
+        .main__country__data-container__border__border-container{
+            box-shadow: 1px 1px 3px 2px #ddd;
+            background-color: #fff;
+        }
+        `
+        document.head.appendChild(clearStyles);
+        console.log("The page is in clear mode ☀️")
+    }
 })
