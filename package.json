@@ -1,0 +1,13 @@
+{
+  "name": "countries-api-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/js/script.js",
+  "scripts": {
+    "sass": "sass --watch src/scss/style.scss public/css/style.css",
+    "ngrok": "ngrok http 127.0.0.1:5501"
+  },
+  "keywords": [],
+  "author": "Tux3er-Isma",
+  "license": "MIT"
+}
