@@ -1,0 +1,66 @@
+/*SCSS Files*/
+@use 'variables';
+
+/*Footer Styles*/
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+
+    .footer__tux3er{
+        width: 50px;
+    }
+
+    .footer__information-container{
+        width: 400px;
+        color: variables.$white;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.32);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(14.1px);
+        -webkit-backdrop-filter: blur(14.1px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+        .footer__information-container__author{
+            display: block;
+            white-space: nowrap;
+            border-right: 4px solid;
+            width: 350px;
+            animation: typing 2s steps(150), blink .5s infinite step-end alternate;
+            overflow: hidden;
+
+            @keyframes typing{
+                from{
+                    width: 0;
+                }
+            }
+
+            @keyframes blink{
+                50%{
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+/*Responsive Mobile Footer Styles*/
+@media only screen and (max-width: 480px){
+    .footer{
+
+        .footer__information-container{
+            width: 300px;
+
+            .footer__information-container__author{
+                font-size: 13.5px;
+            }
+        }
+    }
+}
